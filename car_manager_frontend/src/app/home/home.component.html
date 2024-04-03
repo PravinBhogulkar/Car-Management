@@ -1,0 +1,70 @@
+<!-- <label> Id </label>
+<textarea> </textarea> -->
+<br><br>
+<h1> Welcome to Car Management!!! </h1>
+<label for="usr" class="label">    Id:    </label>
+<input type="text" #titleInput><br><br>
+<!-- <button type = "button" (click)="getCarData(titleInput.value)"> GetCarById </button>
+<br><br> -->
+
+<div>
+  <span>
+    <button pButton type="button" class="departmentButton"
+         (click)="getAllCarData()"> Get All Cars</button>
+  </span>
+
+  <span>
+    <button pButton type="button" class="departmentButton"
+    [routerLink]="['form/create']"> Add car </button>
+  </span>
+
+  <span>
+    <button pButton type="button" class="departmentButton"
+         (click)="getCarData(titleInput.value)" > Search </button>
+  </span>
+
+  <span>
+    <button pButton type="button" class="departmentButton"
+    (click)="openEdit(titleInput.value)"> Update Car </button>
+  </span>
+
+  <span>
+    <button pButton type="button" class="departmentButton"
+         (click)="deleteCarData(titleInput.value)"> Delete Car </button>
+  </span>
+
+  <!-- <br *ngIf="i % 2 == 0"> -->
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- <button onclick="getCarById()"> GetCarById </button> -->
+  <!-- Position Column -->
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="brand">
+    <th mat-header-cell *matHeaderCellDef> Brand </th>
+    <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef> Color </th>
+    <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef> Model </th>
+    <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
